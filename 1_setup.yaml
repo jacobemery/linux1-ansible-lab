@@ -11,11 +11,12 @@
     - name: Start services.
       tags: services
       ansible.builtin.service:
-        name: 
-          - httpd
-          - firewalld
+        name: "{{ item }}"
         state: started
         enabled: yes
+      loop:
+        - httpd
+        - firewalld
 
     - name: Create custom index page.
       tags: index
