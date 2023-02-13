@@ -24,7 +24,7 @@
         src: ./templates/index.html.j2
         dest: /var/www/html/index.html
 
-    - name: Allow http (tcp/80) traffic through the firewall.
+    - name: Allow http (80/tcp) traffic through the firewall.
       tags: firewall
       ansible.posix.firewalld:
         service: http
