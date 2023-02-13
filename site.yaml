@@ -1,0 +1,2 @@
+- import_playbook: 2_requirements.yaml
+- import_playbook: 1_setup.yaml
