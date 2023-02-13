@@ -1,0 +1,6 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Install Ansible-Galaxy dependencies.
+      tags: galaxy
+      ansible.builtin.command: "ansible-galaxy collection install ansible.posix"

@@ -1,0 +1,32 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Install required packages.
+      tags: pkgs
+      ansible.builtin.package:
+        name: 
+          - httpd
+          - firewalld
+
+    - name: Start services.
+      tags: services
+      ansible.builtin.service:
+        name: 
+          - httpd
+          - firewalld
+        state: started
+        enabled: yes
+
+    - name: Create custom index page.
+      tags: index
+      ansible.builtin.template:
+        src: ./templates/index.html.j2
+        dest: /var/www/html/index.html
+
+    - name: Allow http (tcp/80) traffic through the firewall.
+      tags: firewall
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: true 
