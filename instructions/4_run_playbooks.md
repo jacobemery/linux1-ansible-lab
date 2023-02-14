@@ -4,5 +4,5 @@
     - Easy to read and understand - beginner-friendly
     - Free and open-source - large community write modules and plugins to extend it further
     - Powerful - automate thousands of servers at a time
-* These are just a few reasons that Ansible is now the go-to tool for server configuration. You are learning an extremely valuable skill here.
+* These are just a few reasons that Ansible is now the go-to tool for server configuration. You are learning an extremely valuable skill here!
 * 
