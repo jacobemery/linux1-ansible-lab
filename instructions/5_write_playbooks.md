@@ -1,5 +1,5 @@
 # Writing Ansible Playbooks
-## Follow these steps for an introduction to writing Ansible Playbooks.
+## Follow these steps for an introduction to write your first Ansible Playbook.
 If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks.md).
 * So now that you have a sense for what Ansible Playbooks can do, let's have you try your hand at writing one yourself!
 * Let's pretend you're the Linux administrator for a small company that runs a website on their own servers.
@@ -10,20 +10,19 @@ If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks
 ## Creating your Playbook:
 * If you're not there already, go to the git project's root directory.
 ```
-/home/linux1/linux1-ansible-labs
+cd /root/linux1-ansible-lab
 ```
-* Let's start by creating a new file from the /home/linux1/linux1-ansible-labs directory, with the text editor `vi`:
+* Let's start by creating a new file from the /root/linux1-ansible-lab directory, with the text editor `vi`:
 ```
 vi stage2prod.yaml
 ```
-* If you need it, here's a refresher on the basics of using vi:
+* If you need a vi refresher:
     * `vi` is short for 'visual', and it is the basic text editor of the Linux terminal.
     * Use `vi <filename>` to start editing a file.
     * To make changes, press the `i key` to enter 'insert' mode.
     * Use the `arrow keys` to move the cursor around the screen.
     * When you are done editing, hit `Esc` to exit 'insert' mode, and then type `:wq` to 'write' (save) and 'quit' vi.
-    * To quit without saving, do the same as above, except `:q!` instead.
-    * To return editing your index file again, use the vi command again.
+    * To quit without saving, use `:q!` instead.
 * In vi, add the following lines at the top of the file:
 ```
 - hosts: localhost
@@ -32,13 +31,12 @@ vi stage2prod.yaml
       ansible.builtin.copy:
         src: /var/www/html/stage/index.html
         dest: /var/www/html/index.html
-        group: prod
 ```
-* Do you understand how this playbook works so far? [Here](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html) is the copy module's documentation, if you'd like more insight into the possible parameters for this module.
-* But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup.
+* Read through this task and see if you can understand how this playbook works so far. [Here](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)'s the copy module's documentation if you'd like more insight into the parameters for this module.
+* But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup, and we don't want to save over all your hard work in the index.html file.
 * So there's one more task to add before we save and quit vi...
 ## Writing your Playbook
-* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task before the one above that copies `/var/www/html/index.html` to a directory for safe keeping - `/root/site/backup/index.html`
+* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/index.html` to a directory for safe keeping - `/root/site/backup/index.html`
 * A quick helpful note on YAML syntax:
     * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
     * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
@@ -49,13 +47,14 @@ vi stage2prod.yaml
 ## Testing your playbook
 * Before you test your playbook, run these one-time commands to set things up:
 ```
-mkdir -p /root/site/backups
+mkdir -p /root/site/backup
 ```
 ```
 mkdir /var/www/html/stage/
 ```
+Feel free to change the contents in-between the quotes in this next one, if you'd like:
 ```
-echo "stage2test" > /var/www/html/stage/index.html
+echo "stage2prod test" > /var/www/html/stage/index.html
 ```
 * Ok, now let's test out your playbook now! Ready?
 ```

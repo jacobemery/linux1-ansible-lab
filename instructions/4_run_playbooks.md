@@ -54,7 +54,6 @@ cat site.yaml
 ```
 * As we discussed in the lecture section of this class, an Ansible Playbook is a series of declarative automation `tasks` that run against `hosts` (or servers).
 * At the top of the playbook you can see that the host we are running this playbook on is the `localhost`, meaning itself, or sometimes referred to as the `Ansible Controller`. The controller is where Ansible is executed from. The controller can be managed by Ansible just like it would a remote target.
-* The next line says 'become: true', this starts to get into how Ansible works a bit. Ansible uses SSH to connect to the target node as a user, who can then 'become' a super-user. So we are telling Ansible it must have super-user privileges to do these tasks.
 * Then comes the list of tasks that run in order. Each task has a pattern that it follows:
     * `name`: The description of the task being done. This is what is printed in the terminal output. It can be anything, but the more descriptive, the easier it is to understand what the playbook is doing. Other users of the playbook will be appreciative... as will you in the future when you're debugging.
     * `tags`: An optional parameter which allows you to run pieces and parts of playbooks. More on tags later.
