@@ -11,10 +11,8 @@
     - name: Add the user 'linux1' to 'stage' and 'prod' groups.
       ansible.builtin.user:
         name: linux1
-        group: "{{ item }}"
-      loop:
-        - stage
-        - prod
+        groups: stage, prod, linux1
+        append: true
 
     - name: Create stage directory.
       ansible.builtin.file:
