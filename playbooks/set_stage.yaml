@@ -44,7 +44,7 @@
 
     - name: Make prod index.html owned by 'prod' group.
       ansible.builtin.file:
-        path: /var/www/html
+        path: /var/www/html/index.html
         state: file
         owner: linux1
         group: prod
