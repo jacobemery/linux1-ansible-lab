@@ -14,7 +14,7 @@ If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks
 ```
 * Let's start by creating a new file from the /home/linux1/linux1-ansible-labs directory, with the text editor `vi`:
 ```
-vi playbooks/stage2prod.yaml
+vi stage2prod.yaml
 ```
 * If you need it, here's a refresher on the basics of using vi:
     * `vi` is short for 'visual', and it is the basic text editor of the Linux terminal.
@@ -59,7 +59,7 @@ echo "stage2test" > /var/www/html/stage/index.html
 ```
 * Ok, now let's test out your playbook now! Ready?
 ```
-ansible-playbook playbooks/stage2prod.yaml
+ansible-playbook stage2prod.yaml
 ```
 * How'd it go? Did it work?
 * If it did, nice work!! If not, that's ok! It can be tough to get it right. 
@@ -67,9 +67,9 @@ ansible-playbook playbooks/stage2prod.yaml
     * Read the error message carefully and completely. They're not always perfect, but they at least point you in the right direction most of the time.
     * Re-run the playbook with the verbosity the '-v' option to get more debugging information (more v's give more info). For example:
         ```
-        ansible-playbook playbooks/stage2prod.yaml -vvv
+        ansible-playbook stage2prod.yaml -vvv
         ```
-    * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the playbooks/setup.yaml file as a reference.
+    * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the site.yaml file as a reference.
     * If you need to stop a playbook mid-run, hit the `Ctrl+C` keys to terminate it.
     * If you're stumped, don't wait too long before asking me for help in the webex!
 * Hopefully you were able to get that working! It can be sneakily difficult sometimes.
@@ -85,5 +85,5 @@ ansible-playbook playbooks/stage2prod.yaml
     ```
 * And when you're ready to make the new version go live, run this command to push to production from anywhere on the server:
 ```
-ansible-playbook /root/linux1-ansible-lab/playbooks/stage2prod.yaml
+ansible-playbook /root/linux1-ansible-lab/stage2prod.yaml
 ```

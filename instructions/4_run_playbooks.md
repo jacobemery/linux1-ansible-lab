@@ -31,7 +31,7 @@ cd linux1-ansible-lab
 ls -la
 ```
 * You'll see a shell script called `setup.sh`. It's common to have a setup script accompany Ansible Playbooks since Ansible and this set of playbook's other dependencies must be installed first.
-* In this case though, the setup script also runs the first Ansible playbook called `setup.yaml` as well. We'll talk more about what that playbook does after you run it.
+* In this case though, the setup script also runs the first Ansible playbook called `site.yaml` as well. We'll talk more about what that playbook does after you run it.
 * To run the setup script, use the following command:
 ```
 ./setup.sh
@@ -45,12 +45,12 @@ cat setup.sh
 * This is an extremely simple shell script, here's what the three lines do:
     * Install Ansible.
     * Install these playbooks' dependencies in 'requirements.yaml' from Ansible Galaxy, where community-created modules are stored.
-    * Run the setup.yaml Ansible Playbook.
+    * Run the site.yaml Ansible Playbook.
 * This last line is nesting another set of tasks within this script, as it calls Ansible to run the first playbook automatically.
 * So what does <i>that</i> playbook do?
 ## Understanding Ansible Playbooks
 ```
-cat playbooks/setup.yaml
+cat site.yaml
 ```
 * As we discussed in the lecture section of this class, an Ansible Playbook is a series of declarative automation `tasks` that run against `hosts` (or servers).
 * At the top of the playbook you can see that the host we are running this playbook on is the `localhost`, meaning itself, or sometimes referred to as the `Ansible Controller`. The controller is where Ansible is executed from. The controller can be managed by Ansible just like it would a remote target.
@@ -70,12 +70,12 @@ cat playbooks/setup.yaml
 * Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
 * From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
 * Because the playbook was made to be idempotent you can be confident that successive runs of that playbook won't fail in error just because it was run twice.
-* Try it out! Run the setup.yaml playbook again:
+* Try it out! Run the site.yaml playbook again:
 ```
-ansible-playbook playbooks/setup.yaml
+ansible-playbook site.yaml
 ```
 * As you can see, the playbook ran perfectly smooth a second time!
-* And since the setup.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. State changes are represented with colors:
+* And since the site.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. State changes are represented with colors:
     * ${\color{green}ok}$: when the server is already in the desired state and no action was performed.
     * ${\color{yellow}changed}$: when an action was performed (doesn't necessarily mean it is now in the desired state).
     * ${\color{cyan}skipping}$: when a task is explicitly skipped (usually because of a conditional).
