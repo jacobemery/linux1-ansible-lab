@@ -1,0 +1,95 @@
+# Writing Ansible Playbooks
+## Follow these steps for an introduction to writing Ansible Playbooks.
+If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks.md).
+* So now that you have a sense for what Ansible Playbooks can do, let's have you try your hand at writing one yourself!
+* Let's pretend you're the Linux administrator for a small company that runs a website on their own servers.
+* If changes need to be made to the website, it's probably not a good idea to edit the website directly, just in case a change that's introduced ends up crashing it.
+* So let's set up a staging environment. That way we can catch breaking changes before they make it to the website. 
+* If you're making changes to the website often, you'll want to an automated way of moving this new version of the website from staging to production.
+* Ready to write?
+## Creating your Playbook:
+* If you're not there already, go to the git project's root directory.
+```
+/home/linux1/linux1-ansible-labs
+```
+* Let's start by creating a new file from the /home/linux1/linux1-ansible-labs directory, with the text editor `vi`:
+```
+vi playbooks/stage2prod.yaml
+```
+* If you need it, here's a refresher on the basics of using vi:
+    * `vi` is short for 'visual', and it is the basic text editor of the Linux terminal.
+    * Use `vi <filename>` to start editing a file.
+    * To make changes, press the `i key` to enter 'insert' mode.
+    * Use the `arrow keys` to move the cursor around the screen.
+    * When you are done editing, hit `Esc` to exit 'insert' mode, and then type `:wq` to 'write' (save) and 'quit' vi.
+    * To quit without saving, do the same as above, except `:q!` instead.
+    * To return editing your index file again, use the vi command again.
+* In vi, add the following lines at the top of the file:
+```
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Copy index.html from staging to production.
+      ansible.builtin.copy:
+        src: /var/www/html/stage/index.html
+        dest: /var/www/html/index.html
+        group: prod
+```
+* Do you understand how this playbook works so far? [Here](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html) is the copy module's documentation, if you'd like more insight into the possible parameters for this module.
+* But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup.
+* So there's one more task to add before we save and quit vi...
+## Writing your Playbook
+* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task before the one above that copies `/var/www/html/index.html` to a directory for safe keeping - `/home/linux1/site/backup/index.html`
+* A quick helpful note on YAML syntax:
+    * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
+    * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
+    * But just like other markup languages, it has some syntax quirks that can take some getting used to. Particularly with `indentation`.
+    * So just a warning: the indentation of each line must be exactly correct or else the playbook won't work. Follow the indentation that's already provided for you.
+    * If you're really stuck, please ask and I'll help you!
+* When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
+## Testing your playbook
+* Now comes the fun part! Are you ready to try out your playbook?
+* Before we run it, we have to do some one-time setup. Some things that are quick and only need to be done once are better off as simple commands:
+    * Create the staging directory:
+
+        ```
+        sudo mkdir -m 644 /var/www/html/stage
+        ```
+    * Fill the staging index.html with some text:
+        ```
+        sudo echo "stage2prod test" > /var/www/html/stage/index.html
+        ```
+    * And create the backups directory:
+        ```
+        mkdir -p /home/linux1/site/backup
+        ```
+* Ok, let's try out your playbook! Ready?
+```
+ansible-playbook /home/linux1/playbooks/stage2prod.yaml
+```
+* How'd it go? Did it work?
+* If it did, nice work!! If not, that's ok! It can be tough to get it right. 
+* Here are some `troubleshooting tips` if you encountered an error:
+    * Read the error message carefully and completely. They're not always perfect, but they at least point you in the right direction most of the time.
+    * Re-run the playbook with the verbosity the '-v' option to get more debugging information (more v's give more info). For example:
+        ```
+        ansible-playbook playbooks/stage2prod.yaml -vvv
+        ```
+    * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the playbooks/setup.yaml file as a reference.
+    * If you need to stop a playbook mid-run, hit the `Ctrl+C` keys to terminate it.
+    * If you're stumped, don't wait too long before asking me for help in the webex!
+* Hopefully you were able to get that working! It can be sneakily difficult sometimes.
+* Now you have a system in place for staging a new index.html file at /home/linux1/site/stage/index.html, editing, testing, checking it out there first, and then when it's ready, automatically deploy the new version and backup the old one. Pretty cool, eh?
+* Have some fun with your new proto-type website! Go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything! And then send the link to a friend or coworker. Refer to this [HTML cheat sheet](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf) for a quick guide on getting the most out of your customization.
+* And then, once you've checked out your staged web page via web browser:
+    ```
+    http://<ip-address>
+    ```
+    or at least with `curl`:
+    ```
+    curl http://<ip-address>
+    ```
+* And when you're ready to make the new version go live, run this command to push to production from anywhere on the server:
+```
+ansible-playbook /home/linux1/linux1-ansible-lab/playbooks/stage2prod.yaml
+```

@@ -1,0 +1,59 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Create groups - 'stage' and 'prod'. 
+      ansible.builtin.group:
+        name: "{{ item }}"
+      loop:
+        - stage
+        - prod
+
+    - name: Add the user 'linux1' to 'stage' and 'prod' groups.
+      ansible.builtin.user:
+        name: linux1
+        group: "{{ item }}"
+      loop:
+        - stage
+        - prod
+
+    - name: Create stage directory.
+      ansible.builtin.file:
+        path: /var/www/html/stage
+        state: directory
+        owner: linux1
+        group: stage
+        mode: '0644'
+
+    - name: Create index.html file in staging.
+      ansible.builtin.lineinfile:
+        path: /var/www/html/stage/index.html
+        line: "stage2prod test"
+        state: present
+        create: true
+        owner: linux1
+        group: stage
+        mode: '0644'
+
+    - name: Make prod directory owned by 'prod' group.
+      ansible.builtin.file:
+        path: /var/www/html
+        state: directory
+        owner: linux1
+        group: prod
+        mode: '0644'
+
+    - name: Make prod index.html owned by 'prod' group.
+      ansible.builtin.file:
+        path: /var/www/html
+        state: file
+        owner: linux1
+        group: prod
+        mode: '0644'
+
+    - name: Create backup directory.
+      ansible.builtin.file:
+        path: /home/linux1/site/backup
+        state: directory
+        owner: linux1
+        group: prod
+        mode: '0644'

@@ -91,4 +91,4 @@ http://<ip-address>
     * Learned the basic components of a task
     * Learned about the importance of idempotency
 
-## You are now ready to move on to [step 5](), where you will write your first playbook!
+## You are now ready to move on to [step 5](./5_write_playbooks.md), where you will write your first playbook!
