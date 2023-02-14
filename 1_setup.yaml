@@ -18,11 +18,18 @@
         - httpd
         - firewalld
 
+    - name: Check to see if there is already an index.html file.
+      tags: index
+      ansible.builtin.stat:
+        path: /var/www/html/index.html
+      register: index
+
     - name: Create custom index page.
       tags: index
-      ansible.builtin.template:
-        src: ./templates/index.html.j2
+      ansible.builtin.copy:
+        src: ./files/index.html
         dest: /var/www/html/index.html
+      when: not index.stat.exists
 
     - name: Allow http (80/tcp) traffic through the firewall.
       tags: firewall
