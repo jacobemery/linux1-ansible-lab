@@ -56,16 +56,16 @@ cat site.yaml
 * At the top of the playbook you can see that the host we are running this playbook on is the `localhost`, meaning itself, or sometimes referred to as the `Ansible Controller`. The controller is where Ansible is executed from. The controller can be managed by Ansible just like it would a remote target.
 * The next line says 'become: true', this starts to get into how Ansible works a bit. Ansible uses SSH to connect to the target node as a user, who can then 'become' a super-user. So we are telling Ansible it must have super-user privileges to do these tasks.
 * Then comes the list of tasks that run in order. Each task has a pattern that it follows:
-    * `name`: The description of the task being done. This is what is printed in the terminal output. It can be anything, but the more descriptive, the easier it is to understand what the playbook is doing.
+    * `name`: The description of the task being done. This is what is printed in the terminal output. It can be anything, but the more descriptive, the easier it is to understand what the playbook is doing. Other users of the playbook will be appreciative... as will you in the future when you're debugging.
     * `tags`: An optional parameter which allows you to run pieces and parts of playbooks. More on tags later.
     * `module`: The type of task being run, i.e. 'ansible.builtin.package', is the name of the first task's module. This module can install, uninstall, and manage packages (or software) on the server. The modules are where the magic happens in a task.
-    * `module parameters`: Each module has a set of parameters which are documented online (i.e. [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)), this is where you tell the module what exactly what to do. For example, in the first task we have specified a list of two packages 'httpd' and 'firewalld', and that we want them to be in the 'present' state - meaning we want them to be installed on our system. If you changed that to 'absent' instead of 'present', Ansible would remove those packages.
+    * `module parameters`: Each module has a set of parameters which are documented online (i.e. [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)). This is where you tell the module exactly what to do. For example, in the first task we have specified a list of two packages 'httpd' and 'firewalld', and that we want them to be in the 'present' (installed) state. If you changed the desired state to 'absent', Ansible would remove those packages.
     * `additional options`: There are other ways to manipulate the execution of these tasks, for example:
         * `Loops`, as in the second task.
         * `Conditionals`, as in the fourth task.
-        * `Register`, to store variables for future use, as in the third task.
+        * `Register`, to store variables for future use based on a task's output, as in the third task.
         * There are others, but those are the most common.
-* This one playbook did in a few seconds what the labs from yesterday's course all in a few seconds. 
+* This one playbook did in a few seconds what the labs from yesterday all in a few seconds and with very little knowledge of how to use the command-line.
 * Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file as to avoid overwriting your work? But if this is someone's first class, an index.html file was copied since there wasn't one there already.
 * Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
 * From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
@@ -75,7 +75,8 @@ cat site.yaml
 ansible-playbook site.yaml
 ```
 * As you can see, the playbook ran perfectly smooth a second time!
-* And since the site.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. State changes are represented with colors:
+* And since the site.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. 
+* Different colors represent each tasks affect on the state of the server:
     * ${\color{green}ok}$: when the server is already in the desired state and no action was performed.
     * ${\color{yellow}changed}$: when an action was performed (doesn't necessarily mean it is now in the desired state).
     * ${\color{cyan}skipping}$: when a task is explicitly skipped (usually because of a conditional).
@@ -85,7 +86,7 @@ ansible-playbook site.yaml
 ```
 http://<ip-address>
 ```
-* If you forgot your server's IP address, you can get it [here].(https://linuxone.cloud.marist.edu/#/instance).
+* If you forgot your server's IP address, you can get it [here](https://linuxone.cloud.marist.edu/#/instance), or with the command `ip a`
 * Make sure to type in 'http' not 'https', sometimes web browsers will automatically switch it to 'https'. If this happens, use Firefox.
 ## Review:
 * Ok that was a lot of information thrown at you all at once! Hope you held onto your (red) hats.
