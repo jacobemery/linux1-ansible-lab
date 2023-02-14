@@ -63,14 +63,18 @@ cat playbooks/setup.yaml
 * This one playbook did in a few seconds what the labs from yesterday's course all in a few seconds. 
 * Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file as to avoid overwriting your work? But if this is someone's first class, an index.html file was copied since there wasn't one there already.
 * Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
-* From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), idempotency means: <b>"An operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
-* Because the setup.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. 
-* Because of idempotency you can also be confident that successive runs of that playbook won't fail in error just because it was run twice.
+* From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
+* Because the playbook was made to be idempotent you can be confident that successive runs of that playbook won't fail in error just because it was run twice.
 * Try it out! Run the setup.yaml playbook again:
 ```
 ansible-playbook playbooks/setup.yaml
 ```
 * As you can see, the playbook ran perfectly smooth a second time!
+* And since the setup.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. State changes are represented with colors:
+    * ${\color{green}ok}$: when the server is already in the desired state and no action was performed.
+    * ${\color{yellow}changed}$: when an action was performed (doesn't necessarily mean it is now in the desired state).
+    * ${\color{cyan}skipping}$: when a task is explicitly skipped (usually because of a conditional).
+    * ${\color{red}fatal}$: when there's an error, meaning Ansible could not achieve the desired state.
 * Ansible does a <u>lot</u> of the work of making the playbooks idempotent for you, but it is not guaranteed, and sometimes requires tweaking. Newly written playbooks should be thoroughly tested for idempotency.
 * If you weren't here for yesterday's course, open up a web browser and check out your brand new bare-bones website! Type this into a web browser to see it:
 ```
@@ -85,5 +89,6 @@ http://<ip-address>
     * Ran your first Ansible Playbook
     * Learned the basic components of an Ansible Playbook
     * Learned the basic components of a task
+    * Learned about the importance of idempotency
 
 ## You are now ready to move on to [step 5](), where you will write your first playbook!
