@@ -28,7 +28,7 @@
     - name: Create custom index page, if one is not already there.
       tags: index
       ansible.builtin.copy:
-        src: ./files/index.html
+        src: files/index.html
         dest: /var/www/html/index.html
       when: index.stat.exists == False
 
