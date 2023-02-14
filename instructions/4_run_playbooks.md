@@ -10,9 +10,14 @@ If you have not yet connected to your LinuxONE virtual server via SSH, return to
 * Let's jump right in and get your hands dirty running Ansible, shall we?
 ## Running your First Ansible Playbook
 * A `playbook` is the term for the executable file that contains the automation instructions for Ansible.
+* Become the root user by executing the following command:
+```
+sudo -i
+```
+* WARNING: Becoming the root user is very dangerous for the integrity and security of the server because they have access to all commands. Tread carefully.
 * To get you started as quickly as possible, we're going to first install git and then pull a set of pre-made playbooks for this lab by executing the following commands:
 ```
-sudo dnf install git -y
+dnf install git -y
 ```
 ```
 git clone https://github.com/jacobemery/linux1-ansible-lab.git
@@ -20,7 +25,7 @@ git clone https://github.com/jacobemery/linux1-ansible-lab.git
 ```
 cd linux1-ansible-lab
 ```
-* You should now be in the `/home/linux1/linux1-ansible-lab` directory.
+* You should now be in the `/root/linux1-ansible-lab` directory.
 * Do a quick `ls -la` to see what files you just pulled down from the internet:
 ```
 ls -la

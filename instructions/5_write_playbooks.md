@@ -27,7 +27,6 @@ vi playbooks/stage2prod.yaml
 * In vi, add the following lines at the top of the file:
 ```
 - hosts: localhost
-  become: true
   tasks:
     - name: Copy index.html from staging to production.
       ansible.builtin.copy:
@@ -39,7 +38,7 @@ vi playbooks/stage2prod.yaml
 * But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup.
 * So there's one more task to add before we save and quit vi...
 ## Writing your Playbook
-* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task before the one above that copies `/var/www/html/index.html` to a directory for safe keeping - `/home/linux1/site/backup/index.html`
+* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task before the one above that copies `/var/www/html/index.html` to a directory for safe keeping - `/root/site/backup/index.html`
 * A quick helpful note on YAML syntax:
     * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
     * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
@@ -48,13 +47,19 @@ vi playbooks/stage2prod.yaml
     * If you're really stuck, please ask and I'll help you!
 * When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
 ## Testing your playbook
-* Before you run your playbook, I put some setting permissions steps in a playbook. Run that one first:
+* Before you test your playbook, run these one-time commands to set things up:
 ```
-ansible-playbook playbooks/set_stage.yaml
+mkdir -p /root/site/backups
 ```
-* Ok, let's try out your playbook now! Ready?
 ```
-ansible-playbook /home/linux1/playbooks/stage2prod.yaml
+mkdir /var/www/html/stage/
+```
+```
+echo "stage2test" > /var/www/html/stage/index.html
+```
+* Ok, now let's test out your playbook now! Ready?
+```
+ansible-playbook playbooks/stage2prod.yaml
 ```
 * How'd it go? Did it work?
 * If it did, nice work!! If not, that's ok! It can be tough to get it right. 
@@ -80,5 +85,5 @@ ansible-playbook /home/linux1/playbooks/stage2prod.yaml
     ```
 * And when you're ready to make the new version go live, run this command to push to production from anywhere on the server:
 ```
-ansible-playbook /home/linux1/linux1-ansible-lab/playbooks/stage2prod.yaml
+ansible-playbook /root/linux1-ansible-lab/playbooks/stage2prod.yaml
 ```
