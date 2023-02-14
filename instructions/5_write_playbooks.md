@@ -48,22 +48,11 @@ vi playbooks/stage2prod.yaml
     * If you're really stuck, please ask and I'll help you!
 * When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
 ## Testing your playbook
-* Now comes the fun part! Are you ready to try out your playbook?
-* Before we run it, we have to do some one-time setup. Some things that are quick and only need to be done once are better off as simple commands:
-    * Create the staging directory:
-
-        ```
-        sudo mkdir -m 644 /var/www/html/stage
-        ```
-    * Fill the staging index.html with some text:
-        ```
-        sudo echo "stage2prod test" > /var/www/html/stage/index.html
-        ```
-    * And create the backups directory:
-        ```
-        mkdir -p /home/linux1/site/backup
-        ```
-* Ok, let's try out your playbook! Ready?
+* Before you run your playbook, I put some setting permissions steps in a playbook. Run that one first:
+```
+ansible-playbook playbooks/set_stage.yaml
+```
+* Ok, let's try out your playbook now! Ready?
 ```
 ansible-playbook /home/linux1/playbooks/stage2prod.yaml
 ```
