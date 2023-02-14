@@ -7,6 +7,7 @@
         name: 
           - httpd
           - firewalld
+        state: present
 
     - name: Start services.
       tags: services
@@ -24,12 +25,12 @@
         path: /var/www/html/index.html
       register: index
 
-    - name: Create custom index page.
+    - name: Create custom index page, if one is not already there.
       tags: index
       ansible.builtin.copy:
         src: ./files/index.html
         dest: /var/www/html/index.html
-      when: not index.stat.exists
+      when: index.stat.exists == False
 
     - name: Allow http (80/tcp) traffic through the firewall.
       tags: firewall
