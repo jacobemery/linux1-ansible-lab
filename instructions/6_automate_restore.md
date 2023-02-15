@@ -8,7 +8,7 @@ If you have not yet written the stage2prod.yaml playbook, return to [step 5](./5
 ```
 vi stage2prod.yaml
 ```
-* Add the following <i><b>after</i></b> the last task. Make sure to copy over the indentation too (the spaces before 'block'):
+* Add the following <i><b>after</i></b> the last task. Make sure to copy over the indentation too (the spaces before 'block'), sometimes those spaces don't copy in correctly, so double-check that the hyphen before 'block' is in-line with the indentation of the hyphens from the previous tasks:
 ```
     - block:
       - name: Test the production site.
