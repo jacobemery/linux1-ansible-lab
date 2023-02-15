@@ -23,6 +23,7 @@ vi stage2prod.yaml
             name: restore
             tasks_from: restore_from_backup.yaml
 ```
+* Note that this playbook is not yet ready to be run. Testing it now will cause an error.
 * So what did we just add? 
 * Two tasks to help us test if the website is working, and to restore it from the backup if those tests fail.
 * Notice the `block` and `rescue` lines? If any of the tasks in the `block` fail, it will execute the `rescue` section; otherwise it will not run the `rescue` section.
