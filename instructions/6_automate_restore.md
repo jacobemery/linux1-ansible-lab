@@ -53,7 +53,6 @@ vi roles/restore/tasks/test.yaml
 ```
 - name: Check HTTP status code, fail if not OK (code 200).
   tags: http_status
-  warn: false
   ansible.builtin.command: "curl -s -o /dev/null -w '%{http_code}' http://localhost/"
   register: http_status
   failed_when: http_status.stdout != '200'
