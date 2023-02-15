@@ -93,7 +93,8 @@ vi /var/www/html/stage/index.html
 ```
 ansible-playbook /root/linux1-ansible-lab/stage2prod.yaml
 ```
-* And once you have your website into a state you're proud of, send your IP address in the webex chat for everyone else to check it out! And at the end of the day I'll send that person `150 BluePoints`!
+* And once you have your website into a state you're proud of, send your IP address in the webex chat for everyone else to check it out! 
+* And at the end of the day I'll choose the best website creator and send that person `150 BluePoints`!
 ## Review
 * Hopefully you got creative with your new website! You also created some nifty automation with Ansible Playbooks!
     * You wrote your first Ansible playbook, congrats! 
