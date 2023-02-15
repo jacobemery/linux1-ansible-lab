@@ -68,10 +68,11 @@ ansible-playbook test_site.yaml
 * If all goes well, we won't have to manually test if everything is working after our 'rescue' tasks run anymore. We can be confident in our automation to check certain things for us.
 * BUT, how do we know that the rescue tasks' <i>failure</i> conditions are working properly?
 * It's important to know when a restoration was attempted and <i>failed</i>, so that immediate human intervention can take place.
-* If a failure happens silently, and looks like it was rescued, we'll only notice the website's down when customers come calling. Not a great look!
+* If a failure happens silently, and looks like it was rescued and all is well, we'll only notice the website's down when customers come calling. Not great!
 * So, are you ready to <i>really</i> break things?
 ## Testing the Tests
-* Let's `uninstall httpd` completely, so as to prevent our tests from working, just to <i>simulate</i> a <b>catastrophic</b> crash of the site that requires immediate human intervention.
+* Let's `uninstall httpd` completely, so as to prevent our tests from working. Obviously we could easily check that the package is installed, but this is to <i>simulate</i> a <b>catastrophic</b> crash of the site that requires immediate human intervention. 
+* i.e. something happened that we weren't prepared for with our current tests that ended up crashing the site.
 ```
 dnf remove httpd -y
 ```
@@ -79,7 +80,7 @@ dnf remove httpd -y
 ```
 ansible-playbook test_site.yaml
 ```
-* Hopefull that worked, and <i>worked</i> in this case means it <i>failed</i>.
+* Hopefully that worked, and <i>worked</i> in this case means it <i>failed</i>.
 * When things are really broken, we want to make sure alarm bells will sound. 
 * This test was to make sure that IF a catastrophic crash that cannot be remedied by our current tests does occur, we get an error. You could then use that failure to, for example, trigger an email to send to the website admin notifying them that the website is down.
 ## Website Down!
