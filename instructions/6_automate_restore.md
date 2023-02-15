@@ -10,18 +10,18 @@ vi stage2prod.yaml
 ```
 * Add the following <i><b>after</i></b> the last task. Make sure to copy over the indentation too (the spaces before 'block'):
 ```
-  - block:
+    - block:
       - name: Test the production site.
         tags: test
         ansible.builtin.include_role:
           name: restore
           tasks_from: test.yaml
-    rescue:
-      - name: If tests failed, restore from backup.
-        tags: restore
-        ansible.builtin.include_role:
-          name: restore
-          tasks_from: restore_from_backup.yaml
+      rescue:
+        - name: If tests failed, restore from backup.
+          tags: restore
+          ansible.builtin.include_role:
+            name: restore
+            tasks_from: restore_from_backup.yaml
 ```
 * So what did we just add? 
 * Two tasks to help us test if the website is working, and to restore it from the backup if those tests fail.
