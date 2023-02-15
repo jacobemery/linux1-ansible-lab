@@ -74,7 +74,7 @@ ansible-playbook stage2prod.yaml
     * If you're stumped, don't wait too long before asking me for help in the webex!
 * Hopefully you were able to get it working! It can be sneakily difficult sometimes.
 * Now you have a system in place for staging a new version of your site at /var/www/html/stage/. You can now edit, test, and check it out there first, and then when it's ready, automatically deploy the new version and backup the old one. Pretty cool, eh?
-## Webiste Contest
+## Website Contest!
 * To encourage you to have some fun with customizing your new proto-type website, I'll be `giving away 150 BluePoints` to the owner of the best website at the end of the day today! 
 * So go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything!
 * Refer to this [HTML cheat sheet](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf) for a quick guide on getting the most out of your customization:
