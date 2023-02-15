@@ -116,4 +116,4 @@ ansible-playbook stage2prod.yaml
 * Learned about more complicated task parameters like `failed_when` and `register`
 * Incorporated that role into a playbook
 
-## Nice work! You are ready to move on to [step 7](./test_restore.md), where you will further test your restoration automation.
+## Nice work! You are ready to move on to [step 7](./7_test_restore.md), where you will further test your restoration automation.
