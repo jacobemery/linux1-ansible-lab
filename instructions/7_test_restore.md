@@ -3,7 +3,7 @@
 If you have not yet created your 'restore' role, return to [step 6](./6_automate_restore.md).
 
 * So we have an Ansible role for restoring from a backup, but are we sure it'll work when we need it to?
-* For testing purposes, let's first create a separate playbook for testing the website and restoring from backup if needed:
+* For testing purposes, let's first create a separate playbook for just the testing and restoring part of your staging-to-production playbook:
 ```
 vi test_site.yaml
 ```
