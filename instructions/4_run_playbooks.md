@@ -64,7 +64,7 @@ cat site.yaml
         * `Register`, to store variables for future-use based on the task's output, as in the third task.
         * `Conditionals`, as in the fourth task.
         * There are others, but those are the most common.
-* This one playbook did in a few seconds what the labs from yesterday all in a few seconds and with very little knowledge of how to use the command-line.
+* This one playbook accomplished what all the labs from yesterday's course did in just a few seconds, and with very little knowledge of how to use the command-line!
 * Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file as to avoid overwriting your work? But if this is someone's first class, an index.html file was copied since there wasn't one there already.
 * Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
 * From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
