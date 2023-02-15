@@ -103,7 +103,7 @@ Your immediate action is required.
 Help us on-call-admin, you're our only hope!
 ```
 * You see the notification and click on it. Pausing that video you were watching.
-* Your eyes widen... reading. You let out a gasp, oh no! Your face gets hot, your heart start pumping, mind racing!!! 
+* Your eyes widen... reading. You let out a gasp, oh no! Your face gets hot, your heart starts pumping faster, mind racing!!! 
 * Then you remember: 'wait I have automation for this.' A sense of calm washes over you, shoudlers relax, eyes sharpen.
 * We'll be ok. Let's do this...
 * What's the first thing you do?
