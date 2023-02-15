@@ -5,7 +5,7 @@ If you have not yet connected to your LinuxONE virtual server via SSH, return to
     - <b>Easy to read and understand:</b> beginner-friendly
     - <b>Powerful:</b> automate thousands of servers at a time.
     - <b>Agent-less:</b> nothing is installed on the managed servers, so easy set-up and low overhead.
-    - <b>Free and open-source:</b> large community write modules and plugins to extend it further, like the [collection](https://www.ibm.com/support/z-content-solutions/ansible/) IBM created to automate z/OS with Ansible!
+    - <b>Free and open-source:</b> large community writes modules and plugins to extend it further, like the [collection](https://www.ibm.com/support/z-content-solutions/ansible/) IBM created to automate z/OS with Ansible!
 * These are just a few reasons that Ansible is now the go-to tool for server configuration. You are learning an extremely valuable skill here!
 * Let's jump right in and get your hands dirty running Ansible, shall we?
 ## Running your First Ansible Playbook
