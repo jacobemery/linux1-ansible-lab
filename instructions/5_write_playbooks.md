@@ -1,5 +1,5 @@
 # Writing Ansible Playbooks
-## Follow these steps for an introduction to write your first Ansible Playbook.
+## Follow these steps to write your first Ansible Playbook.
 If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks.md).
 * So now that you have a sense for what Ansible Playbooks can do, let's have you try your hand at writing one yourself!
 * Let's pretend you're the Linux administrator for a small company that runs a website on their own servers.
@@ -53,7 +53,7 @@ mkdir -p /root/site/backup/
 ```
 mkdir /var/www/html/stage/
 ```
-Feel free to change the contents in-between the quotes in this next one, if you'd like:
+* Feel free to change the contents in-between the quotes in this next one, if you'd like:
 ```
 echo "stage2prod test" > /var/www/html/stage/index.html
 ```
