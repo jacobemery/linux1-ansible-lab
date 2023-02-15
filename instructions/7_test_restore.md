@@ -65,10 +65,11 @@ systemctl stop httpd
 ```
 ansible-playbook test_site.yaml
 ```
-* If all goes well, we won't have to manually test if everything is working after our 'rescue' tasks run.
+* If all goes well, we won't have to manually test if everything is working after our 'rescue' tasks run anymore. We can be confident in our automation to check certain things for us.
 * BUT, how do we know that the rescue tasks' <i>failure</i> conditions are working properly?
 * It's important to know when a restoration was attempted and <i>failed</i>, so that immediate human intervention can take place.
-* Are you ready to really <i>break</i> things?
+* If a failure happens silently, and looks like it was rescued, we'll only notice the website's down when customers come calling. Not a great look!
+* So, are you ready to <i>really</i> break things?
 ## Testing the Tests
 * Let's `uninstall httpd` completely, so as to prevent our tests from working, just to <i>simulate</i> a <b>catastrophic</b> crash of the site that requires immediate human intervention.
 ```
