@@ -53,4 +53,4 @@ Last login: Sat Feb 11 17:09:01 2023 from 76.172.75.216
 [linux1@test1234 ~]$
 ```
 
-## You are now connected and ready to continue on to [step 4](./4_navigate.md).
+## You are now connected and ready to continue on to [step 4](./4_run_playbooks).
