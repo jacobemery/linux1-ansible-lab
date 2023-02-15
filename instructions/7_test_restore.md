@@ -88,18 +88,25 @@ ansible-playbook test_site.yaml
 ```
 To: on-call-admin@widgets.com
 From: no-reply@widgets.com
-Subject: URGENT: Website Down
+Subject: URGENT - Website Down!!!!
 
 Attention on-call admin, 
+
+This is an automated report with an urgent message:
 The website was reported 'down' at: 
 11:11:11 AM on February 15, 2023.
 
 Restoration from backup failed.
 
 Your immediate action is required.
+
+Help us on-call-admin, you're our only hope!
 ```
-* Your eyes widen, you let out a gasp, your face gets hot, your heart start pumping, mind racing!!! 
-* What's the first thing you do!?
+* You see the notification and click on it. Pausing that video you were watching.
+* Your eyes widen... reading. You let out a gasp, oh no! Your face gets hot, your heart start pumping, mind racing!!! 
+* Then you remember: 'wait I have automation for this.' A sense of calm washes over you, shoudlers relax, eyes sharpen.
+* We'll be ok. Let's do this...
+* What's the first thing you do?
 * Open a web browser and go to the website:
 ```
 http://<ip-address>
@@ -124,10 +131,11 @@ ansible-playbook test_site.yaml
 http://<ip-address>
 ```
 * You should be back online. PHEW!
-* That's why you always create backups, create processes to restore those backups, test those restore processes, and test those tests. 
-* And with Ansible, that can all be automated!
-* I hope you're getting the sense of how powerful of a tool Ansible is, and of its potential!
-* This is barely scratching the surface of Ansible's uses.
+* Nice work!! You saved the day.
+* That's why it's important to create backups, create processes to restore those backups, test those restoration processes, and then thoroughly test those tests. 
+* And that can all be automated with Ansible!
+* I hope you're getting a sense for how powerful of a tool Ansible is, and of its potential!
+* This is barely scratching the surface of its many uses.
 
 ## Review
 * Learned about the `ansible.cfg` file for Ansible settings.
@@ -137,10 +145,12 @@ http://<ip-address>
 ## More Ansible Labs:
 * If you're hungry for more Ansible, here are some resources for you:
     * [Free labs](https://www.redhat.com/en/interactive-labs/ansible) from Red Hat, the creators of Ansible. I'd recommend starting with the "Writing Your First Playbook" lab.
-    * [Video series](https://www.youtube.com/watch?v=3RiVKs8GHYQ) from YouTuber 'Learn Linux TV', the best hands-on online tutorial I've found for learning Ansible.
+    * [Video series](https://www.youtube.com/watch?v=3RiVKs8GHYQ) from YouTuber 'Learn Linux TV' - the best hands-on online tutorial I've found for learning Ansible.
 ## Hands-On Lab Complete!
 * Nice work!! If you've made it this far, you did some serious automating!
 * I hope this tutorial was helpful and interesting for you.
 * You will have access to this virtual server until February 24, but you can request a two-week extension by emailing linux1@us.ibm.com
-* If you have comments, questions, feedback concerns, I'd love to hear them! 
+* If you have comments, questions, feedback, concerns, I'd love to hear them! 
 * Please reach out to me at jacob.emery@ibm.com
+
+## Don't forget to send your IP addresses in the Webex for a chance to win 150 BluePoints!
