@@ -65,7 +65,8 @@ cat site.yaml
         * `Conditionals`, as in the fourth task.
         * There are others, but those are the most common.
 * This one playbook accomplished what all the labs from yesterday's course did in just a few seconds, and with very little knowledge of how to use the command-line!
-* Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file as to avoid overwriting your work? But if this is someone's first class, an index.html file was copied since there wasn't one there already.
+* Briefly read through the playbook if you haven't already.
+* Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file? This was to avoid overwriting your work, in case you were in yesterday's lab. But if this your first lab with me, an index.html file was copied since there wasn't one there already.
 * Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
 * From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
 * Because the playbook was made to be idempotent you can be confident that successive runs of that playbook won't fail in error just because it was run twice.
