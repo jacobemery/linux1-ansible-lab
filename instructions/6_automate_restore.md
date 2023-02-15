@@ -105,8 +105,8 @@ ansible-playbook stage2prod.yaml
 ```
 * Did the playbook run ok? 
 * If not, check out the Ansible documentation's [troubleshooting guide](https://docs.ansible.com/ansible-tower/2.2.0/html/administration/troubleshooting.html) for help. If after a short time, you can't get it figured out, please ask in the Webex.
-* If your playbook successfully ran, great!
-* Your playbook may have run without any errors though, so you didn't really get to see whether or not the restore_from_backup part of your playbook actually works. 
+* If your playbook successfully ran, meaning you didn't see any ${\color{red}red}$, great! 
+* If your playbook ran without any errors though, you didn't really get to see whether or not the restore_from_backup part of your playbook actually works, right?
 * How can we know for sure that your restoration process will work when you need it most?
 * Well, like any good system administrator, we have to test it! That's where we're headed next...
 * But first, let's review what we learned in this step:
