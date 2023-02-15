@@ -36,7 +36,7 @@ vi stage2prod.yaml
 * But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup, and we don't want to save over all your hard work in the index.html file.
 * So there's one more task to add before we save and quit vi...
 ## Writing your Playbook
-* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/` to a directory for safe keeping - `/root/site/backup/`
+* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/` to a directory for safe keeping - `/root/site/backup/`. Make sure it is after the 'tasks:' line, but before the other task that's already there.
 * A quick helpful note on YAML syntax:
     * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
     * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
