@@ -5,7 +5,7 @@ If you have not yet run the setup playbook, return to [step 4](./4_run_playbooks
 * Let's pretend you're the Linux administrator for a small company that runs a website on their own servers.
 * If changes need to be made to the website, it's probably not a good idea to edit the website directly, just in case a change that's introduced ends up crashing it.
 * So let's set up a staging environment. That way we can catch breaking changes before they make it to the website. 
-* If you're making changes to the website often, you'll want to an automated way of moving this new version of the website from staging to production.
+* If you're making changes to the website often, you'll want an automated way of moving this new version of the website from staging to production.
 * Ready to write?
 ## Creating your Playbook:
 * If you're not there already, go to the git project's root directory.
