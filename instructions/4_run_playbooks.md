@@ -61,8 +61,8 @@ cat site.yaml
     * `module parameters`: Each module has a set of parameters which are documented online (i.e. [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)). This is where you tell the module exactly what to do. For example, in the first task we have specified a list of two packages 'httpd' and 'firewalld', and that we want them to be in the 'present' (installed) state. If you changed the desired state to 'absent', Ansible would remove those packages.
     * `additional options`: There are other ways to manipulate the execution of these tasks, for example:
         * `Loops`, as in the second task.
+        * `Register`, to store variables for future-use based on the task's output, as in the third task.
         * `Conditionals`, as in the fourth task.
-        * `Register`, to store variables for future use based on a task's output, as in the third task.
         * There are others, but those are the most common.
 * This one playbook did in a few seconds what the labs from yesterday all in a few seconds and with very little knowledge of how to use the command-line.
 * Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file as to avoid overwriting your work? But if this is someone's first class, an index.html file was copied since there wasn't one there already.
