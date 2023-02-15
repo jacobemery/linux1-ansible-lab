@@ -24,10 +24,11 @@ vi stage2prod.yaml
         tasks_from: restore_from_backup.yaml
 ```
 * So what did we just add? 
-* First we added a `block`. If any of the tasks in the block fail, it will execute the `rescue` section.
+* Two tasks to help us test if the website is working, and to restore it from the backup if those tests fail.
+* Notice the `block` and `rescue` lines? If any of the tasks in the `block` fail, it will execute the `rescue` section; otherwise it will not run the `rescue` section.
 * Notice how I said 'any of the tasks in the block' but we seem to only have one task in this block, so what's going on here?
 ## Ansible Roles
-* This is a special task that is nesting additional tasks that will come from the 'restore' role.
+* This `include_role` module is special because it is nesting additional tasks that will come from the 'restore' role.
 * `Roles` help us to organize tasks into functional groups. Roles are usually created if those tasks need to be run in several different playbooks which all need the same set of tasks completed.
 * So let's create the 'restore' role together, hopefully it will make more sense in practice.
 * From the project's root directory (/root/linux1-ansible-lab), run the following command to create the necessary files and directories:
