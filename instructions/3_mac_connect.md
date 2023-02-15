@@ -2,7 +2,7 @@
 ## Follow these steps to connect to your virtual server via Secure Shell (SSH) on Mac using the Terminal.
 * If you haven't provisioned your virtual server yet, see [step 2](./2_provision.md) for instructions.
 * If you're a Windows user, go [here](./3_windows_connect.md) instead.
-1) Get your IP address for your virtual server [here](https://linuxone.cloud.marist.edu/#/instance) from IBM LinuxONE Community Cloud.
+1) Get the IP address of your virtual server [here](https://linuxone.cloud.marist.edu/#/instance) from IBM LinuxONE Community Cloud.
 2) Open the 'Terminal' application. It can be found in 'Finder' under 'Applications/Utilities':
 
 ![Terminal-Finder](../images/Terminal-Finder.png)
@@ -15,7 +15,7 @@ For example:
 ```
 chmod 400 ~/Downloads/test1234.pem
 ```
-4) Type in the following command, but substitute in your IP address and the path to your private key file:
+4) Type in the following command, but substitute in your server's IP address and the path to your private key file:
 ```
 ssh linux1@<ip-address> -i <path-to-key-file>
 ```
