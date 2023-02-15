@@ -76,7 +76,7 @@ ansible-playbook site.yaml
 ```
 * As you can see, the playbook ran perfectly smooth a second time!
 * And since the site.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. 
-* Different colors represent each tasks affect on the state of the server:
+* Different colors represent each task's effect on the state of the server:
     * ${\color{green}ok}$: when the server is already in the desired state and no action was performed.
     * ${\color{yellow}changed}$: when an action was performed (doesn't necessarily mean it is now in the desired state).
     * ${\color{cyan}skipping}$: when a task is explicitly skipped (usually because of a conditional).
