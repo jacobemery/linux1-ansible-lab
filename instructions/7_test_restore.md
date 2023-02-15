@@ -40,7 +40,7 @@ vi test_site.yaml
 ```
 systemctl stop httpd
 ```
-* Now that the web server is stopped, the trigger restoration process should be triggered this time. Let's test it:
+* Now that the web server is stopped, the restoration process should be triggered this time. Let's test it:
 ```
 ansible-playbook test_site.yaml
 ```
