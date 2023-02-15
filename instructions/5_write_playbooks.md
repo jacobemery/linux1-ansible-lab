@@ -39,10 +39,10 @@ vi stage2prod.yaml
 * Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/` to a directory for safe keeping - `/root/site/backup/`
 * A quick helpful note on YAML syntax:
     * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
-    * These playbooks use a double space instead of a tab for each indentation.
     * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
     * But just like other markup languages, it has some syntax quirks that can take some getting used to. Particularly with `indentation`.
     * So just a warning: the indentation of each line must be exactly correct or else the playbook won't work. Follow the indentation that's already provided for you.
+    * These playbooks use a double space instead of a tab for each indentation.
     * If you're really stuck, please ask and I'll help you!
 * When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
 ## Testing your playbook
