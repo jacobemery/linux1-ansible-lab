@@ -27,16 +27,16 @@ vi stage2prod.yaml
 ```
 - hosts: localhost
   tasks:
-    - name: Copy index.html from staging to production.
+    - name: Copy staging environment to production.
       ansible.builtin.copy:
-        src: /var/www/html/stage/index.html
-        dest: /var/www/html/index.html
+        src: /var/www/html/stage/
+        dest: /var/www/html/
 ```
 * Read through this task and see if you can understand how this playbook works so far. [Here](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)'s the copy module's documentation if you'd like more insight into the parameters for this module.
 * But there's an important step missing here. If we copy out this file, it will replace and delete the old version. That's no good! If something goes wrong, we need to be able to quickly revert back to a backup, and we don't want to save over all your hard work in the index.html file.
 * So there's one more task to add before we save and quit vi...
 ## Writing your Playbook
-* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/index.html` to a directory for safe keeping - `/root/site/backup/index.html`
+* Using the [copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html), write a task, <b><i>before</i></b> the one already there, that copies `/var/www/html/` to a directory for safe keeping - `/root/site/backup/`
 * A quick helpful note on YAML syntax:
     * Ansible playbooks are written in `YAML` (which stands for Yet Another Markup Language, I wish that was a joke). More on YAML syntax [here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
     * YAML is great because it doesn't have a lot of special characters, like [JSON](https://builtin.com/software-engineering-perspectives/yaml-vs-json) does.
@@ -47,7 +47,7 @@ vi stage2prod.yaml
 ## Testing your playbook
 * Before you test your playbook, run these one-time commands to set things up:
 ```
-mkdir -p /root/site/backup
+mkdir -p /root/site/backup/
 ```
 ```
 mkdir /var/www/html/stage/
@@ -56,7 +56,7 @@ Feel free to change the contents in-between the quotes in this next one, if you'
 ```
 echo "stage2prod test" > /var/www/html/stage/index.html
 ```
-* Ok, now let's test out your playbook now! Ready?
+* Ok, now let's test out your playbook! Ready?
 ```
 ansible-playbook stage2prod.yaml
 ```
@@ -71,18 +71,32 @@ ansible-playbook stage2prod.yaml
     * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the site.yaml file as a reference.
     * If you need to stop a playbook mid-run, hit the `Ctrl+C` keys to terminate it.
     * If you're stumped, don't wait too long before asking me for help in the webex!
-* Hopefully you were able to get that working! It can be sneakily difficult sometimes.
-* Now you have a system in place for staging a new index.html file at /home/linux1/site/stage/index.html, editing, testing, checking it out there first, and then when it's ready, automatically deploy the new version and backup the old one. Pretty cool, eh?
-* Have some fun with your new proto-type website! Go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything! And then send the link to a friend or coworker. Refer to this [HTML cheat sheet](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf) for a quick guide on getting the most out of your customization.
-* And then, once you've checked out your staged web page via web browser:
+* Hopefully you were able to get it working! It can be sneakily difficult sometimes.
+* Now you have a system in place for staging a new version of your site at /var/www/html/stage/. You can now edit, test, and check it out there first, and then when it's ready, automatically deploy the new version and backuping the old one. Pretty cool, eh?
+## Webiste Contest
+* To encourage you to have some fun with customizing your new proto-type website, I'll be `giving away 150 BluePoints` to the owner of the best website at the end of the day today! 
+* So go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything!
+* Refer to this [HTML cheat sheet](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf) for a quick guide on getting the most out of your customization:
+```
+vi /var/www/html/stage/index.html
+```
+* And once you're done editing and you've checked out your staged website via web browser...
     ```
-    http://<ip-address>
+    http://<ip-address>/stage/
     ```
-    or at least with `curl`:
+    ...or at least with `curl`...
     ```
-    curl http://<ip-address>
+    curl http://<ip-address>/stage/
     ```
-* And when you're ready to make the new version go live, run this command to push to production from anywhere on the server:
+* ...and you're ready to make the new version go live, run this command to push to production from anywhere on the server:
 ```
 ansible-playbook /root/linux1-ansible-lab/stage2prod.yaml
 ```
+* And once you have your website into a state you're proud of, send your IP address in the webex chat for everyone else to check it out! And at the end of the day I'll send that person `150 BluePoints`!
+## Review
+* Hopefully you got creative with your new website! You also created some nifty automation with Ansible Playbooks!
+    * You wrote your first Ansible playbook, congrats! 
+    * You have your very own website
+    * You created a simple staging-to-production pipeline for your website
+
+## You are now ready to move on to [step 6](./6_automate_restore.md), where you will continue to improve your website's automation!

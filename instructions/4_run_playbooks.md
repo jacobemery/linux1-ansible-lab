@@ -91,7 +91,7 @@ http://<ip-address>
 * Ok that was a lot of information thrown at you all at once! Hope you held onto your (red) hats.
 * Let's review what you've learned so far:
     * Learned about why Ansible is so widely used
-    * Ran your first Ansible Playbook
+    * Ran your first Ansible Playbook to deploy a simple website
     * Learned the basic components of an Ansible Playbook
     * Learned the basic components of a task
     * Learned about the importance of idempotency
