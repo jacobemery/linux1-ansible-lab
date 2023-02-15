@@ -30,7 +30,7 @@ cd linux1-ansible-lab
 ```
 ls -la
 ```
-* You'll see a shell script called `setup.sh`. It's common to have a setup script accompany Ansible Playbooks since Ansible and this set of playbook's other dependencies must be installed first.
+* You'll see a shell script called `setup.sh`. It's common to have a setup script accompany Ansible Playbooks since Ansible and this set of playbooks' other dependencies must be installed first.
 * In this case though, the setup script also runs the first Ansible playbook called `site.yaml` as well. We'll talk more about what that playbook does after you run it.
 * To run the setup script, use the following command:
 ```
