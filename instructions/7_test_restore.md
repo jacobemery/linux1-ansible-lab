@@ -28,7 +28,7 @@ vi test_site.yaml
 * Save and quit vi, you have that locked into memory yet?
 * Before we run this playbook, you may have noticed a ${\color{purple}warning}$ about using the 'get_url' module when running one of the tasks before. Let's silence that warning, since it isn't helpful in this case, and it gives us a good moment to talk about an important file: `ansible.cfg`.
     * The 'ansible.cfg' file hosts configuration settings either globally for the entire system, or just for a set of playbooks.
-    * This file is extremely important for customization your environment, but we've just been working with default settings so far.
+    * This file is normally extremely important for customizing your environment when running playbooks, we've just been working with default settings so far.
     ```
     echo -e "[defaults] \ncommand_warnings=False" > ansible.cfg
     ```
