@@ -23,11 +23,11 @@ vi stage2prod.yaml
             name: restore
             tasks_from: restore_from_backup.yaml
 ```
-* Note that this playbook is not yet ready to be run. Testing it now will cause an error.
+* Note: this playbook is not yet ready to be run. Testing it now will cause an error.
 * So what did we just add? 
-* Two tasks to help us test if the website is working, and to restore it from the backup if those tests fail.
+* You added two tasks to help test if the website is working, and to restore it from the backup if those tests fail.
 * Notice the `block` and `rescue` lines? If any of the tasks in the `block` fail, it will execute the `rescue` section; otherwise it will not run the `rescue` section.
-* Notice how I said 'any of the tasks in the block' but we seem to only have one task in this block, so what's going on here?
+* Did you notice 'any of the tasks in the block' but we seem to only have one task in this block, right? So what's going on here?
 ## Ansible Roles
 * This `include_role` module is special because it is nesting additional tasks that will come from the 'restore' role.
 * `Roles` help us to organize tasks into functional groups. Roles are usually created if those tasks need to be run in several different playbooks which all need the same set of tasks completed.
@@ -73,7 +73,7 @@ vi roles/restore/tasks/test.yaml
     * First, we use the `command` module to run a terminal command directly, in this case, a `curl` command. Then we filter the output so that it returns only the [HTTP status code](https://www.semrush.com/blog/http-status-codes/?kw=&cmp=US_SRCH_DSA_Blog_EN&label=dsa_pagefeed&Network=g&Device=c&utm_content=622080552390&kwid=dsa-1754723155433&cmpid=18348486859&agpid=145169429990&BU=Core&extid=60113851316&adpos=&gclid=CjwKCAiA_6yfBhBNEiwAkmXy525fWG7dbu1RmmgnLMDdt_J4jXij5pmM89U7_Ue7F8nXPSmOVX_JeBoCFjEQAvD_BwE). It then has a `failed_when` conditional, which tells Ansible to make the task ${\color{red}fail}$ if the status code is <i>not</i> 200 (200 meaning all is well, so it will fail when all is <i>not</i> well). 
     * Next, we again use the `command` module, but this time with `cat` to check the contents of the /var/www/html/index.html file. This output is then registered (or stored) as a variable called `cat_index_check`, which will then be compared with the output of the following task.
     * Finally, we run the `command` module with `curl` again, but this time to get the contents of the homepage directly from HTTP, and save it as `curl_index_check`. We then use another `failed_when` conditional to tell Ansible to make the task ${\color{red}fail}$ if `cat_index_check` and `curl_index_check` are not exactly the same.
-* Did that all make sense? If not, let me know in the Webex.
+* Did that all make sense?
 * Notice that we also didn't need to specify the `hosts` parameter at the beginning of this file, like we did in the playbook. This is because a `role` will be run in <i>many different playbooks</i>. The playbook holds the information about <i>where</i> this role will be run, so it's not needed here.
 * You can now save and quit `vi`: `Esc` key to leave 'insert' mode, then `:wq` to save and quit.
 * We're almost done with our role! But we still need the `restore_from_backup.yaml` file to be filled in so that if anything from `test.yaml` fails, we'll be able to revive our website.
@@ -95,7 +95,7 @@ vi roles/restore/tasks/restore_from_backup.yaml
     name: httpd
     state: restarted
 ```
-* Did you notice that I didn't use the fully-qualified module names? That's because the 'ansible.builtin' modules are installed by default, and don't need the entire module name. For example, instead of `ansible.builtin.copy`, only `copy` is required. Other modules that are not part of 'ansible.builtin' require the full module name to be specified.
+* Did you notice that this snippet didn't use the fully-qualified module names of the modules? That's because the 'ansible.builtin' modules are installed by default, and don't need the entire module name. For example, instead of `ansible.builtin.copy`, only `copy` is required. Other modules that are not part of 'ansible.builtin' require the full module name to be specified.
 * So what do these tasks do? They're a little more self explanatory than the others, but let's go task-by-task:
     * First, because these tasks are only run if the tests failed, we know something is already wrong. So we restore from our backup copy in hopes of returning to the safety of a previously working website. This will overwrite the production webpage, but remember that staging has our back there.
     * Second, we restart the httpd service, this is a catch-all for many different problems that arise. The good 'ol "did you try turning it off and on?"

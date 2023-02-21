@@ -32,7 +32,7 @@ vi test_site.yaml
     ```
     echo -e "[defaults] \ncommand_warnings=False" > ansible.cfg
     ```
-* Ok , now we're ready to test out our playbook to make sure the restoration process works!
+* Ok, now we're ready to test out our playbook to make sure the restoration process works!
 * Let's break some things, shall we?
 ## Testing Restoration from Backup
 * WARNING: In a real production environment, these tests would be run on the staging environment (and probably a 'development' environment too) beforehand, but for simplicity's sake, we're going to test them live.
@@ -149,8 +149,5 @@ http://<ip-address>
 ## Hands-On Lab Complete!
 * Nice work!! If you've made it this far, you did some serious automating!
 * I hope this tutorial was helpful and interesting for you.
-* You will have access to this virtual server until February 24, but you can request a two-week extension by emailing linux1@us.ibm.com
 * If you have comments, questions, feedback, concerns, I'd love to hear them! 
 * Please reach out to me at jacob.emery@ibm.com
-
-## Don't forget to send your IP addresses in the Webex for a chance to win 150 BluePoints!

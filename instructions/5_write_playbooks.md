@@ -43,7 +43,6 @@ vi stage2prod.yaml
     * But just like other markup languages, it has some syntax quirks that can take some getting used to. Particularly with `indentation`.
     * So just a warning: the indentation of each line must be exactly correct or else the playbook won't work. Follow the indentation that's already provided for you.
     * These playbooks use a double space instead of a tab for each indentation.
-    * If you're really stuck, please ask and I'll help you!
 * When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
 ## Testing your playbook
 * Before you test your playbook, run these one-time commands to set things up:
@@ -71,12 +70,10 @@ ansible-playbook stage2prod.yaml
         ```
     * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the site.yaml file as a reference.
     * If you need to stop a playbook mid-run, hit the `Ctrl+C` keys to terminate it.
-    * If you're stumped, don't wait too long before asking me for help in the webex!
 * Hopefully you were able to get it working! It can be sneakily difficult sometimes.
 * Now you have a system in place for staging a new version of your site at /var/www/html/stage/. You can now edit, test, and check it out there first, and then when it's ready, automatically deploy the new version and backup the old one. Pretty cool, eh?
-## Website Contest!
-* To encourage you to have some fun with customizing your new proto-type website, I'll be `giving away 150 BluePoints` to the owner of the best website at the end of the day today! 
-* So go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything!
+## Website Customization!
+* Go wild! Be creative! Fill your index.html file with text, headers, colors, images! Customize to your hearts content! Do whatever you want with your website! Post cat gifs, memes, poetry, anything!
 * Refer to this [HTML cheat sheet](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf) for a quick guide on getting the most out of your customization:
 ```
 vi /var/www/html/stage/index.html
@@ -89,12 +86,10 @@ vi /var/www/html/stage/index.html
     ```
     curl http://<ip-address>/stage/
     ```
-* ...and you're ready to make the new version go live, run this command to push to production from anywhere on the server:
+* ...and when you're ready to make the new version go live, run this command to push to production from anywhere on the server:
 ```
 ansible-playbook /root/linux1-ansible-lab/stage2prod.yaml
 ```
-* And once you have your website into a state you're proud of, send your IP address in the webex chat for everyone else to check it out! 
-* And at the end of the day I'll choose the best website creator and send that person `150 BluePoints`!
 ## Review
 * Hopefully you got creative with your new website! You also created some nifty automation with Ansible Playbooks!
     * You wrote your first Ansible playbook, congrats! 

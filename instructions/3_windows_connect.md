@@ -2,23 +2,9 @@
 ## Follow these steps to connect to your virtual server via Secure Shell (SSH) on Windows using PuTTY.
 * If you haven't provisioned your virtual server yet, see [step 2](./2_provision.md) for instructions.
 * If you're a Mac user, go [here](./3_mac_connect.md) instead.
-1) Get your IP address for your virtual server [here](https://linuxone.cloud.marist.edu/#/instance) from IBM LinuxONE Community Cloud.
-2) Open the 'PuTTY' application by selecting it from your 'Programs' menu. If you have Windows 10, you can do this most easily by clicking the Windows icon in the lower-left hand corner and then typing 'putty'.
-3) Enter that IP address in the Host Name (or IP address) box:
-
-![PuTTY Dialog Box](../images/PuTTY.png)
-
-4) Click on `SSH` and then `Auth` in the 'Category' sidebar:
-5) Find and select the SSH private key file that you created when provisioning your virtual server (i.e. C:\users\your-name\downloads\test1234.pem).
-6) Click `Open` to establish a connection to the server.
-
-![PuTTY Auth Box](../images/PuTTY-Auth.png)
-
-7) You may see a 'PuTTY Security Alert' warning you that 'the server's host key is not cached in the registry'. This is normal for first-time connections. Click 'Yes' to continue:
-
-![Putty Security Alert](../images/PuTTY-Security-Alert.png)
-
-You should see the following text appear:
+* Get your IP address for your virtual server [here](https://linuxone.cloud.marist.edu/#/instance) from IBM LinuxONE Community Cloud.
+* Follow the steps laid out in the [fast start guide](https://github.com/linuxone-community-cloud/technical-resources/blob/master/faststart/PUTTY_Set_up.pdf) provided by the LinuxONE Community Cloud.
+* You are done with this step when you login to the server and see the following text appear:
 ```
  ___ ____  __  __      _     _                   ___  _   _ _____
 |_ _| __ )|  \/  |    | |   (_)_ __  _   ___  __/ _ \| \ | | ____|

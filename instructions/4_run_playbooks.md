@@ -52,7 +52,7 @@ cat setup.sh
 ```
 cat site.yaml
 ```
-* As we discussed in the lecture section of this class, an Ansible Playbook is a series of declarative automation `tasks` that run against `hosts` (or servers).
+* An Ansible Playbook is a series of declarative automation `tasks` that run against `hosts` (or servers).
 * At the top of the playbook you can see that the host we are running this playbook on is the `localhost`, meaning itself, or sometimes referred to as the `Ansible Controller`. The controller is where Ansible is executed from. The controller can be managed by Ansible just like it would a remote target.
 * Then comes the list of tasks that run in order. Each task has a pattern that it follows:
     * `name`: The description of the task being done. This is what is printed in the terminal output. It can be anything, but the more descriptive, the easier it is to understand what the playbook is doing. Other users of the playbook will be appreciative of thorough descriptions... as will you in the future when debugging.
@@ -64,10 +64,10 @@ cat site.yaml
         * `Register`, to store variables for future-use based on the task's output, as in the third task.
         * `Conditionals`, as in the fourth task.
         * There are others, but those are the most common.
-* This one playbook accomplished what all the labs from yesterday's course did in just a few seconds, and with very little knowledge of how to use the command-line!
+* This one playbook accomplished what all the labs from the [LinuxONE command-line lab](https://github.com/jacobemery/linux1-lab/tree/general) did in just a few seconds, and with very little knowledge of how to use the command-line!
 * Briefly read through the playbook if you haven't already.
-* Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file? This was to avoid overwriting your work, in case you were in yesterday's lab. But if this your first lab with me, an index.html file was copied since there wasn't one there already.
-* Whether you were in the course yesterday or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
+* Did you notice in the playbook how it first checked to make sure there wasn't already an index.html file? This was to avoid overwriting your work, in case you already completed the [LinuxONE command-line lab](https://github.com/jacobemery/linux1-lab/tree/general). But if this your first lab, an index.html file was copied since there wasn't one there already.
+* Whether you completed the previous lab or not, the Ansible playbook worked the same for everyone. This brings up an interesting and important concept in Ansible: `idempotency`.
 * From the [Ansible documentation](https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html), <b>"an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions."</b>
 * Because the playbook was made to be idempotent you can be confident that successive runs of that playbook won't fail in error just because it was run twice.
 * Try it out! Run the site.yaml playbook again:
@@ -75,7 +75,7 @@ cat site.yaml
 ansible-playbook site.yaml
 ```
 * As you can see, the playbook ran perfectly smooth a second time!
-* And since the site.yaml playbook is idempotent, it doesn't matter if you were in yesterday's class or not. Now everyone's servers are in the same `state`. 
+* And since the site.yaml playbook is idempotent, it doesn't matter if you did the previous lab or not. Now your server is in the same `state` as it would've been. 
 * Different colors represent each task's effect on the state of the server:
     * ${\color{green}ok}$: when the server is already in the desired state and no action was performed.
     * ${\color{yellow}changed}$: when an action was performed (doesn't necessarily mean it is now in the desired state).

@@ -1,5 +1,5 @@
 # Welcome to the Ansible on IBM zSystems Hands-on Lab!
-## Here you will find the [instructions](./instructions/) for the hands-on Ansible labs for the course administered by Jacob Emery in February, 2023! 
+## Here you will find the [instructions](./instructions/) for a hands-on Ansible lab created by Jacob Emery from IBM's Washington Systems Center.
 
 ## [Let's get started!](./instructions/1_register.md)
 
