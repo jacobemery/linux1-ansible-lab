@@ -2,12 +2,11 @@
 ## Follow these steps to connect to your virtual server via Secure Shell (SSH) on Mac using the Terminal.
 * If you haven't provisioned your virtual server yet, see [step 2](./2_provision.md) for instructions.
 * If you're a Windows user, go [here](./3_windows_connect.md) instead.
-1) Get the IP address of your virtual server [here](https://linuxone.cloud.marist.edu/#/instance) from IBM LinuxONE Community Cloud.
-2) Open the 'Terminal' application. It can be found in 'Finder' under 'Applications/Utilities':
+1) Open the 'Terminal' application. It can be found in 'Finder' under 'Applications/Utilities':
 
 ![Terminal-Finder](../images/Terminal-Finder.png)
 
-3) Stick with me here, this part's a little tricky. If you need help please ask me! In the terminal prompt, type in the following command, but substitute in the path to your private key file that you created when provisioning your virtual server:
+2) In the terminal prompt, type in the following command, but substitute in the path to your private key file that you created when provisioning your virtual server:
 ```
 chmod 400 <path-to-key-file>
 ```
@@ -15,7 +14,7 @@ For example:
 ```
 chmod 400 ~/Downloads/test1234.pem
 ```
-4) Type in the following command, but substitute in your server's IP address and the path to your private key file:
+3) Type in the following command, but substitute in your server's IP address (from [here](https://linuxone.cloud.marist.edu/#/instance)) and the path to your private key file:
 ```
 ssh linux1@<ip-address> -i <path-to-key-file>
 ```
@@ -23,7 +22,7 @@ For example:
 ```
 ssh linux1@148.100.77.96 -i ~/Downloads/test1234.pem
 ```
-5) After doing so you will see the following message:
+4) After doing so you will see the following message:
 ```
 The authenticity of host '148.100.77.96 (148.100.77.96)' can't be established.
 ED25519 key fingerprint is SHA256:FwHNWt0fu76CthKGSQfBTt4QvfrpoEgW+MMG0jPCQ7g.
