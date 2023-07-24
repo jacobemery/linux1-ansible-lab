@@ -47,10 +47,7 @@ vi stage2prod.yaml
 ## Testing your playbook
 * Before you test your playbook, run these one-time commands to set things up:
 ```
-mkdir -p /root/site/backup/
-```
-```
-mkdir /var/www/html/stage/
+mkdir -p /root/site/backup/ /var/www/html/stage/
 ```
 * Feel free to change the contents in-between the quotes in this next one, if you'd like:
 ```
