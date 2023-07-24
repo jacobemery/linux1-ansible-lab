@@ -16,11 +16,11 @@
 ![create](../images/create.png)
 
 4) Select options for your virtual server:
-* <b>Instance name</b>: can be anything of your choosing, i.e. test1234
-* <b>Select an Image</b>: `RHEL9.1` - Red Hat Enterprise Linux version 9.1
+* <b>Instance name</b>: can be anything of your choosing, i.e. linux1test
+* <b>Select an Image</b>: `RHEL8.7` - Red Hat Enterprise Linux version 8.7
 * <b>Select a Flavor</b>: `LinuxONE` - the only option available.
 
-![server-info](../images/server-info-9.1.png)
+![server-info](../images/server-info.png)
 
 4) Click `Create` under 'Select a SSH key pair':
 
