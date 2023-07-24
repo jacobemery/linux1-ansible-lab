@@ -82,7 +82,7 @@ ansible-playbook site.yaml
     * ${\color{cyan}skipping}$: when a task is explicitly skipped (usually because of a conditional).
     * ${\color{red}fatal}$: when there's an error, meaning Ansible could not achieve the desired state.
 * Ansible does a <u>ton</u> of the work behind-the-scenes to make playbooks idempotent for you, but it is not guaranteed, and sometimes requires tweaking. Newly written playbooks should be thoroughly tested for idempotency.
-* If you weren't here for yesterday's course, open up a web browser and check out your brand new bare-bones website! Type this into a web browser to see it:
+* Open up a web browser and check out your brand new bare-bones website! Type this into a web browser to see it:
 ```
 http://<ip-address>
 ```
