@@ -17,7 +17,7 @@
 
 4) Select options for your virtual server:
 * <b>Instance name</b>: can be anything of your choosing, i.e. test1234
-* <b>Select an Image</b>: `RHEL8.7` - Red Hat Enterprise Linux version 8.7
+* <b>Select an Image</b>: `RHEL9.1` - Red Hat Enterprise Linux version 9.1
 * <b>Select a Flavor</b>: `LinuxONE` - the only option available.
 
 ![server-info](../images/server-info.png)
