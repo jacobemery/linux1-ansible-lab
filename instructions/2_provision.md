@@ -20,7 +20,7 @@
 * <b>Select an Image</b>: `RHEL9.1` - Red Hat Enterprise Linux version 9.1
 * <b>Select a Flavor</b>: `LinuxONE` - the only option available.
 
-![server-info](../images/server-info.png)
+![server-info](../images/server-info-9.1.png)
 
 4) Click `Create` under 'Select a SSH key pair':
 
