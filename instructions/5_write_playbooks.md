@@ -45,7 +45,7 @@ vi stage2prod.yaml
     * These playbooks use a double space instead of a tab for each indentation.
 * When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
 ## Testing your playbook
-* Before you test your playbook, run these one-time commands to set things up:
+* Before you test your playbook, run this one-time command to set things up:
 ```
 mkdir -p /root/site/backup/ /var/www/html/stage/
 ```
