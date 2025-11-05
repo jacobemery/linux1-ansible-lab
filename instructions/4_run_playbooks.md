@@ -87,7 +87,13 @@ ansible-playbook site.yaml
 http://<ip-address>
 ```
 * If you forgot your server's IP address, you can get it [here](https://linuxone.cloud.marist.edu/#/instance), or with the command `ip a`
-* Make sure to type in 'http' not 'https', sometimes web browsers will automatically switch it to 'https'. If this happens, use Firefox.
+* If you are having issues reaching your server:
+    * make sure to type in 'http' not 'https', sometimes web browsers will automatically switch it to 'https'.
+    * If this happens, use Firefox, go to settings, search for 'https' and click the checkbox for "Don't Enable HTTPS-only mode" or add a exception for http://<ip-address>
+* If you are still unable to get to the site, use this command to at least check out the contents:
+```
+curl http://127.0.0.1
+```
 ## Review:
 * Ok that was a lot of information thrown at you all at once! Hope you held onto your (red) hats.
 * Let's review what you've learned so far:
