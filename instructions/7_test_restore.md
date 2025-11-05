@@ -32,6 +32,10 @@ vi test_site.yaml
     ```
     echo -e "[defaults] \nlocalhost_warning=False" > ansible.cfg
     ```
+    * Then print that file to the terminal to check it out:
+    ```
+    cat ansible.cfg
+    ```
 * Ok, now we're ready to test out our playbook to make sure the restoration process works!
 * Let's break some things, shall we?
 ## Testing Restoration from Backup
