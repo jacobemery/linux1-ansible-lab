@@ -146,7 +146,7 @@ systemctl status httpd
 * Uh oh, this is bad! httpd could not be found! Who would uninstall httpd!?
 * Gotta quickly reinstall it:
 ```
-dnf install httpd -y
+ansible-playbook site.yaml
 ```
 * Once that finishes, you scramble to type in the restoration playbook command:
 ```
