@@ -43,7 +43,22 @@ vi stage2prod.yaml
     * But just like other markup languages, it has some syntax quirks that can take some getting used to. Particularly with `indentation`.
     * So just a warning: the indentation of each line must be exactly correct or else the playbook won't work. Follow the indentation that's already provided for you.
     * These playbooks use a double space instead of a tab for each indentation.
-* When you are ready, hit the `Esc` key to exit 'insert' mode, and then type `:wq` to save and quit vi.
+ * When you're done, it should look something like this:
+```
+- hosts: localhost
+  tasks:
+
+    - name: Copy staging environment to production.
+      ansible.builtin.copy:
+        src: /var/www/html/
+        dest: /root/site/backup/
+
+    - name: Copy staging environment to production.
+      ansible.builtin.copy:
+        src: /var/www/html/stage/
+        dest: /var/www/html/
+```
+* When you are done, quit and save vi by hitting the `Esc` key to exit 'insert' mode, and then type `:wq` and then the `Enter` key to save and quit vi.
 ## Testing your playbook
 * Before you test your playbook, run this one-time command to set things up:
 ```
@@ -63,7 +78,7 @@ ansible-playbook stage2prod.yaml
     * Read the error message carefully and completely. They're not always perfect, but they at least point you in the right direction most of the time.
     * Re-run the playbook with the verbosity the '-v' option to get more debugging information (more v's give more info). For example:
         ```
-        ansible-playbook stage2prod.yaml -vvv
+        ansible-playbook stage2prod.yaml -v
         ```
     * Double-check your indentation, especially if it mentions a syntax error. Match it up with the task that's already there, or use the site.yaml file as a reference.
     * If you need to stop a playbook mid-run, hit the `Ctrl+C` keys to terminate it.
