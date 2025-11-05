@@ -60,6 +60,29 @@ systemctl status httpd
 vi test_site.yaml
 ```
 * Now `copy` the whole 'test the production site' task from the `block` section and `paste` it in the `rescue` section, after the 'If tests failed, restore from backup' task.
+```
+- hosts: localhost
+  tasks:
+    - block:
+      - name: Test the production site.
+        tags: test
+        ansible.builtin.include_role:
+          name: restore
+          tasks_from: test.yaml
+
+      rescue:
+      - name: If tests failed, restore from backup.
+        tags: restore
+        ansible.builtin.include_role:
+          name: restore
+          tasks_from: restore_from_backup.yaml
+
+      - name: Test the production site.
+        tags: test
+        ansible.builtin.include_role:
+          name: restore
+          tasks_from: test.yaml
+```
 * Make sure to line up the indentation with what's already there. Double check it.
 * Let's again bring down the httpd service:
 ```
