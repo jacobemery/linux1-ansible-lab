@@ -174,6 +174,7 @@ http://<ip-address>
     * [Free labs](https://www.redhat.com/en/interactive-labs/ansible) from Red Hat, the creators of Ansible. I'd recommend starting with the "Writing Your First Playbook" lab.
     * [Video series](https://www.youtube.com/watch?v=3RiVKs8GHYQ) from YouTuber 'Learn Linux TV' - the best hands-on online tutorial I've found for learning Ansible.
     * For IBM partners and employees, check out the collection [IBM z/OS® Automation via Red Hat® Ansible® Certified Content for IBM Z®](https://techzone.ibm.com/collection/60af8387790c30001e46be44) in TechZone, and its accompanying [hands-on lab](https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=940&tabId=2224&w=1).
+    * [Credly Badge](https://www.credly.com/org/ibm/badge/ansible-for-ibm-z-linuxone-foundations) free online course covering Ansible for IBM Z & LinuxONE, including videos, demos, hands-on labs, quizzes, and you get a badge!
 ## Hands-On Lab Complete!
 * Nice work!! If you've made it this far, you did some serious automating!
 * I hope this tutorial was helpful and interesting for you.
