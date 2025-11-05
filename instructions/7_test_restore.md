@@ -111,7 +111,7 @@ ansible-playbook test_site.yaml
 * When things are really broken, we want to make sure alarm bells will sound. 
 * This test was to make sure that IF a catastrophic crash that cannot be remedied by our current tests does occur, we get an error. You could then use that failure to, for example, trigger an email to send to the website admin notifying them that the website is down.
 ## Website Down!
-* Since <i>you</i> are the website's admin, let's pretend you just received an email notifying you that the website is down:
+* However, since <i>you</i> are the website's admin, let's pretend you just received an email notifying you that the website is down:
 ```
 To: on-call-admin@widgets.com
 From: no-reply@widgets.com
