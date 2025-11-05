@@ -74,7 +74,7 @@ vi roles/restore/tasks/test.yaml
     * Next, we again use the `command` module, but this time with `cat` to check the contents of the /var/www/html/index.html file. This output is then registered (or stored) as a variable called `cat_index_check`, which will then be compared with the output of the following task.
     * Finally, we run the `command` module with `curl` again, but this time to get the contents of the homepage directly from HTTP, and save it as `curl_index_check`. We then use another `failed_when` conditional to tell Ansible to make the task ${\color{red}fail}$ if `cat_index_check` and `curl_index_check` are not exactly the same.
 * Did that all make sense?
-* Notice that we also didn't need to specify the `hosts` parameter at the beginning of this file, like we did in the playbook. This is because a `role` will be run in <i>many different playbooks</i>. The playbook holds the information about <i>where</i> this role will be run, so it's not needed here.
+* Notice that we also didn't need to specify the `hosts` parameter at the beginning of this file, like we did in the playbook. This is because a `role` can be run in <i>many different playbooks</i>. The playbook holds the information about <i>where</i> this role will be run, so it's not needed here. It's a way to easily reuse a set of tasks in many playbooks.
 * You can now save and quit `vi`: `Esc` key to leave 'insert' mode, then `:wq` to save and quit.
 * We're almost done with our role! But we still need the `restore_from_backup.yaml` file to be filled in so that if anything from `test.yaml` fails, we'll be able to revive our website.
 * So let's open up the `restore_from_backup.yaml` file:
