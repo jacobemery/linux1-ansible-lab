@@ -85,17 +85,16 @@ vi roles/restore/tasks/restore_from_backup.yaml
 ```
 - name: Restore website from backup.
   tags: restore
-  copy: 
+  ansible.builtin.copy: 
     src: /root/site/backup/
     dest: /var/www/html/
 
 - name: Restart httpd service.
   tags: restart
-  service:
+  ansible.builtin.service:
     name: httpd
     state: restarted
 ```
-* Did you notice that this snippet didn't use the fully-qualified module names of the modules? That's because the 'ansible.builtin' modules are installed by default, and don't need the entire module name. For example, instead of `ansible.builtin.copy`, only `copy` is required. Other modules that are not part of 'ansible.builtin' require the full module name to be specified.
 * So what do these tasks do? They're a little more self explanatory than the others, but let's go task-by-task:
     * First, because these tasks are only run if the tests failed, we know something is already wrong. So we restore from our backup copy in hopes of returning to the safety of a previously working website. This will overwrite the production webpage, but remember that staging has our back there.
     * Second, we restart the httpd service, this is a catch-all for many different problems that arise. The good 'ol "did you try turning it off and on?"
