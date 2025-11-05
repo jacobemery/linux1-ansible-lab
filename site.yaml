@@ -38,3 +38,14 @@
         state: enabled
         permanent: true
         immediate: true 
+
+    - name: Insert ACCEPT rule for TCP/80 in INPUT
+      tags: iptables
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: "80"
+        jump: ACCEPT
+        state: present
+        action: insert
+        rule_num: "1"
