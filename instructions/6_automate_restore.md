@@ -52,27 +52,36 @@ vi roles/restore/tasks/test.yaml
 ```
 * Paste in the following:
 ```
-- name: Check HTTP status code, fail if not OK (code 200).
-  tags: http_status
-  ansible.builtin.command: "curl -s -o /dev/null -w '%{http_code}' http://localhost/"
-  register: http_status
-  failed_when: http_status.stdout != '200'
+- name: Check HTTP 200 and capture body (no temp files)
+  ansible.builtin.uri:
+    url: http://localhost/
+    method: GET
+    status_code: 200
+    return_content: yes
+  register: homepage
 
-- name: Check contents of website's main index
-  tags: index
-  ansible.builtin.command: "cat /var/www/html/index.html"
-  register: cat_index_check
+- name: Compute SHA-256 of live body
+  ansible.builtin.set_fact:
+    homepage_sha256: "{{ homepage.content | hash('sha256') }}"
 
-- name: Check contents of website's homepage with curl, fail if not the same as previous
-  tags: index
-  ansible.builtin.command: "curl http://localhost"
-  register: curl_index_check
-  failed_when: cat_index_check.stdout != curl_index_check.stdout
+- name: SHA-256 of baseline file
+  ansible.builtin.stat:
+    path: /var/www/html/index.html
+    checksum_algorithm: sha256
+  register: baseline
+
+- name: Fail if homepage content differs from baseline
+  ansible.builtin.assert:
+    that:
+      - baseline.stat.checksum is defined
+      - homepage_sha256 == baseline.stat.checksum
+    fail_msg: "Homepage content differs from /var/www/html/index.html"
 ```
 * So what does all this do? It's a bit complicated, so let's go task-by-task:
-    * First, we use the `command` module to run a terminal command directly, in this case, a `curl` command. Then we filter the output so that it returns only the [HTTP status code](https://www.semrush.com/blog/http-status-codes/?kw=&cmp=US_SRCH_DSA_Blog_EN&label=dsa_pagefeed&Network=g&Device=c&utm_content=622080552390&kwid=dsa-1754723155433&cmpid=18348486859&agpid=145169429990&BU=Core&extid=60113851316&adpos=&gclid=CjwKCAiA_6yfBhBNEiwAkmXy525fWG7dbu1RmmgnLMDdt_J4jXij5pmM89U7_Ue7F8nXPSmOVX_JeBoCFjEQAvD_BwE). It then has a `failed_when` conditional, which tells Ansible to make the task ${\color{red}fail}$ if the status code is <i>not</i> 200 (200 meaning all is well, so it will fail when all is <i>not</i> well). 
-    * Next, we again use the `command` module, but this time with `cat` to check the contents of the /var/www/html/index.html file. This output is then registered (or stored) as a variable called `cat_index_check`, which will then be compared with the output of the following task.
-    * Finally, we run the `command` module with `curl` again, but this time to get the contents of the homepage directly from HTTP, and save it as `curl_index_check`. We then use another `failed_when` conditional to tell Ansible to make the task ${\color{red}fail}$ if `cat_index_check` and `curl_index_check` are not exactly the same.
+    * First, we use the uri module to pull information about the website's contents and check the status code.
+    * It then uses that gathered info to compute the checksum.
+    * Then we gather the checksum data of the index.html file.
+    * Finally, it compares the two checksums and fails if they are not the same.
 * Did that all make sense?
 * Notice that we also didn't need to specify the `hosts` parameter at the beginning of this file, like we did in the playbook. This is because a `role` can be run in <i>many different playbooks</i>. The playbook holds the information about <i>where</i> this role will be run, so it's not needed here. It's a way to easily reuse a set of tasks in many playbooks.
 * You can now save and quit `vi`: `Esc` key to leave 'insert' mode, then `:wq` to save and quit.
